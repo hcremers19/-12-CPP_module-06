@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:59:17 by hcremers          #+#    #+#             */
-/*   Updated: 2022/09/27 18:38:56 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:25:39 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Convert::Convert(std::string str)
 {
 	double	valFloat = std::atof(str.c_str());
-	int		valInt = static_cast<int>(valFloat);
+	int		valInt = static_cast<int>(valFloat);								// Allows to manage the scientific writing of numbers
 
 	if (str.length() == 1 && isprint(str[0]) && !valInt && str[0] != '0')
 	{
@@ -31,7 +31,7 @@ Convert::Convert(std::string str)
 	else
 	{
 		_isInt = 1;
-		if (INT_MIN <= _intVal && _intVal <= INT_MAX)
+		if (valInt == INT_MIN)
 			_isInt = 0;
 		_isChar = isprint(valInt);
 		_intVal = valInt;
