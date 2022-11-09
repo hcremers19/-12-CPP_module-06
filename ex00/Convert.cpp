@@ -6,17 +6,17 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:59:17 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/04 16:25:39 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:03:31 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
-#include <limits>
+#include <climits>
 
 Convert::Convert(std::string str)
 {
 	double	valFloat = std::atof(str.c_str());
-	int		valInt = static_cast<int>(valFloat);								// Allows to manage the scientific writing of numbers
+	int		valInt = static_cast<int>(valFloat);
 
 	if (str.length() == 1 && isprint(str[0]) && !valInt && str[0] != '0')
 	{
@@ -31,7 +31,7 @@ Convert::Convert(std::string str)
 	else
 	{
 		_isInt = 1;
-		if (valInt == INT_MIN)
+		if (INT_MIN <= _intVal && _intVal <= INT_MAX)
 			_isInt = 0;
 		_isChar = isprint(valInt);
 		_intVal = valInt;
